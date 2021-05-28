@@ -1,0 +1,92 @@
+{% extends "base.html" %}
+
+<!-- head -->
+{% block head %}
+
+{% endblock %}
+
+<!-- body -->
+{% block body %}
+<br>
+    <div id="main" class="container-fluid p-5 mt-3 mb-3">  
+<br>
+        <div class="row">
+<br>
+        <div class="col-sm-3 col-md-6 col-lg-4">
+                <div  id="side_block" class="container card">
+
+                    <table id="mainTable" class="display">
+                        <thead>
+                            <tr>
+                                <th>Names</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Row 1 Data 1</td>
+                                <td>Row 1 Data 2</td>
+                            </tr>
+                            <tr>
+                                <td>Row 2 Data 1</td>
+                                <td>Row 2 Data 2</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
+
+            <br><br>
+            <div class="col-sm-9 col-md-6 col-lg-8">
+
+                    <div id="create_resource" class=" container-fluid">
+                        <div class="card card-shadow">
+                            <div class="card-body">
+
+                                <div id="create_resource">
+                                    <form action="">
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" id="title" placeholder="Enter Title">
+                                        </div>
+                                
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" id="content" placeholder="Enter Content">
+                                        </div>
+                                        <button type="button" class="btn btn-primary">Primary</button>
+                                    </form>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                
+                    
+
+                    <div class="col">
+                        <br>
+                        <div id="display_resource" class="">
+                        
+                            <div class="card bg-primary text-white">
+                                <div class="card-body">Primary card</div>
+                            </div>
+                            <br>
+                            <div class="card bg-success text-white">
+                                <div class="card-body">Success card</div>
+                            </div>
+
+                        </div>
+                        <br>
+                    </div>
+            
+
+            </div> 
+            <!-- container -->
+
+            </div>
+        </div>
+    </div>
+
+  <br>
+
+{% endblock %}
