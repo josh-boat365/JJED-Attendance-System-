@@ -21,24 +21,15 @@
     <link rel="stylesheet" href="/static/css/style.css">
     <!-- <link rel="shortcut icon" href="{{ url_for('static', filename='images/favicon.ico') }}"> -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <title>JJED</title>
     
+    {% block title %} 
+    
+    {% endblock %}
 </head>
 <body>
-    <header id="myheader">
-    
-        <ul class="avatar">
-          <li><img class="side_image" src="{{url_for('static',filename = 'images/avatar.png')}}" alt="avatar"></li>
-          <li><p>Admin</p></li>
-        </ul>
-          <center>
-            Admin Dashboard
-          </center>
-          {% block header %} 
-    
-          {% endblock %}
-    </header>
-    
+  {% block header %} 
+
+  {% endblock %}
     
    
     

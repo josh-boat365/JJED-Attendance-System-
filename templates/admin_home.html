@@ -3,12 +3,26 @@
 {% extends "base.html" %}
 
 <!-- head -->
+{% block title %}
+<title>JJED</title>
+{% endblock %}
+
 
 {% block header %}
-<button type="button" class="btn" data-toggle="modal" data-target="#logoutmodal">
-  log out
-  <i class="fa fa-sign-out" aria-hidden="true"></i>
-</button>
+<header id="myheader">
+    
+  <ul class="avatar">
+    <li><img class="side_image" src="{{url_for('static',filename = 'images/avatar.png')}}" alt="avatar"></li>
+    <li><p>Admin</p></li>
+  </ul>
+    <center>
+      Admin Dashboard
+    </center>
+    <button type="button" class="btn" data-toggle="modal" data-target="#logoutmodal">
+      log out
+      <i class="fa fa-sign-out" aria-hidden="true"></i>
+    </button>
+</header>
 {% endblock %}
 
 <!-- body -->
