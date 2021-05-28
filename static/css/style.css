@@ -1,0 +1,117 @@
+header{
+    padding: 5px;
+    background-color: rgb(247, 203, 147);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+
+}
+.add_intern button{
+    position: absolute;
+    bottom: 40px;
+    right: 28px;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background-color: rgb(68, 68, 247);
+}
+.side_image{
+    width: 40px;
+    height: 40px;
+}
+.avatar{
+    list-style: none;
+    display: inline-flex;
+    margin: 2px;
+    padding: 8px;
+}
+
+footer{
+    background-color:rgb(247, 203, 147);
+    padding: 20px;
+    font-weight: bold;
+}
+
+body{
+    width: 100%;
+    margin: 0px;
+    padding: 0px;
+    height: 100vh;
+}
+
+.main{
+    height: 76%; 
+    padding: 20px;
+    /* border: 1px rgb(140, 41, 160) solid; */
+    background-color: rgb(240, 240, 240);  
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+#side{
+    border-top: 5px rgb(247, 203, 147) solid;
+    width: 38%;
+    height: 380px;
+    margin-left: 20px;
+    padding: 5px;
+}
+#controls{
+    width: 58%;
+    margin-left: 10px;
+    padding: 5px;
+    box-sizing: border-box;
+}
+
+#create{
+    /* border: 1px green solid; */
+    border-top: 5px rgb(247, 203, 147) solid;
+    /* border-style: groove; */
+    margin-bottom: 15px;
+    padding: 20px;
+}
+#view{
+    /* border: 1px blue solid; */
+    border-top: 5px rgb(247, 203, 147) solid;
+    margin-top: 15px;
+    padding-top: 10px;
+    padding: 5px;
+    height: 180px;
+    /* display: block; */
+    scroll-behavior: smooth;
+}
+.mycard{
+    /* border-left: 5px rgb(77, 74, 248) solid; */
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.3);
+    transition: 0.4s;
+    border-radius: 5px;
+    padding: 10px;
+    background-color: white;
+}
+.scroll {
+    max-height: 380px;
+    overflow-y: auto;
+}
+.data{
+    
+    box-shadow: 0 4px 8px 0 rgba(129, 127, 127, 0.1);
+    transition: 0.1s;
+    border-radius: 3px;
+    padding: 5px;
+    background-color: white;
+    margin: 3px;
+    
+}
+.border_left_brown{border-left: 5px rgb(247, 203, 147) solid; padding: 0px; margin: 0px;}
+.border_left_red{border-left: 5px rgb(248, 105, 95) solid; padding: 0px; margin: 0px;}
+.border_left_green{border-left: 5px rgb(188, 250, 137) solid;}
+.border_left_blue{border-left: 5px rgb(140, 109, 252) solid;}
+
+.data ul{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.clear{clear: both;}

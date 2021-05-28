@@ -1,0 +1,269 @@
+<!-- html  -->
+
+{% extends "base.html" %}
+
+<!-- head -->
+
+{% block header %}
+<button type="button" class="btn" data-toggle="modal" data-target="#logoutmodal">
+  log out
+  <i class="fa fa-sign-out" aria-hidden="true"></i>
+</button>
+{% endblock %}
+
+<!-- body -->
+{% block body %}
+    <div class="main">
+
+        <div id="side" class="mycard scroll">
+            <table id="mainTable" class="table">
+                <thead>
+                    <tr>
+                        <th>Names</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Row 1 Data 1</td>
+                        <td><i class="fa fa-check text-success" aria-hidden="true"></i></td>
+                    </tr>
+                    <tr>
+                        <td>Row 1 Data 1</td>
+                        <td><i class="fa fa-check text-success" aria-hidden="true"></i></td>
+                    </tr>
+                    <tr>
+                        <td>Row 1 Data 1</td>
+                        <td><i class="fa fa-check text-success" aria-hidden="true"></i></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+
+        <div id="controls">
+          <!-- add card headers -->
+            <div id="create" class="mycard">
+                <form action="">
+                    <div class="form-group">
+                        <!-- <input type="text"  placeholder="Enter Title"> -->
+                        <select class="form-control" id="title" name="title" id="title">
+                          <option value=""  selected hidden>select an activity</option>
+                          <option value="Activity">Activity</option>
+                          <option value="Zoom Link">Zoom Link</option>
+                          <option value="Lab link">Lab link</option>
+                          <option value="Quick Notes">Quick Notes</option>
+                        </select>
+                    </div>
+            
+                    <div class="form-group">
+                        <input type="text" class="form-control" id="content" placeholder="Enter Content">
+                    </div>
+                    <center><button type="button" class="btn btn-primary">Create</button></center>
+                </form>
+            </div>
+
+            
+
+            <div id="view" class="mycard scroll">
+
+              <div class="data border_left_brown">
+                <ul class="avatar">
+                  <li>Git and Github as a distributed version control system</li>
+                  <li>
+                    <form action="" method="">
+                      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#editmodal">
+                          <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                        </button>
+                  </form>
+                  </li>
+                  <br>
+                  <li>
+                    <form action="" method="">
+                      <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#deletemodal">
+                          <i class="fa fa-trash-o " aria-hidden="true"></i>
+                        </button>
+                  </form>
+                  </li>
+                </ul>
+              </div>
+
+              <div class="data border_left_red">
+                <ul class="avatar">
+                  <li>Git and Github as a distributed version control system</li>
+                  <li>
+                    <form action="" method="">
+                      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#editmodal">
+                          <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                        </button>
+                  </form>
+                  </li>
+                  <br>
+                  <li>
+                    <form action="" method="">
+                      <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#deletemodal">
+                          <i class="fa fa-trash-o " aria-hidden="true"></i>
+                        </button>
+                  </form>
+                  </li>
+                </ul>
+              </div>
+
+                <!-- <table id="" class="table">
+                    <tbody>
+                        <tr>
+                          <td>Git and Github as a distributed version control system</td>
+                          <td>
+                              
+                              <form action="">
+                                  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#editmodal">
+                                      <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                                    </button>
+                              </form>
+                          </td>
+                          <td>
+                              <form action="">
+                                  <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#deletemodal">
+                                      <i class="fa fa-trash-o " aria-hidden="true"></i>
+                                    </button>
+                              </form>
+                          </td>
+                        </tr>
+                        <tr>
+                            <td>Row 1 Data 1</td>
+                            <td><i class="fa fa-pencil-square-o text-primary" aria-hidden="true"></i></td>
+                            <td><i class="fa fa-trash-o text-danger" aria-hidden="true"></i></td>
+                        </tr>
+                    </tbody> -->
+                </table>
+            </div>
+        </div>
+
+    </div>
+<div class="clear"></div>
+
+
+<div class="add_intern">
+  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#createmodal">
+    <i class="fa fa-plus" aria-hidden="true"></i>
+  </button>
+</div>
+
+
+
+<!-- Create Modal -->
+<div class="modal fade" id="createmodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel"><center>Create Modal</center></h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <form action="#">
+        <div class="modal-body">
+
+            <div class="form-group">
+              <input class="form-control" type="text" name="username" placeholder=" Enter Intern name">
+            </div>
+
+            <div class="form-group">
+              <input name="office" type="text" class="form-control form-control-user" placeholder="Enter Scchool">
+            </div>
+
+            <div class="form-group">
+              <!-- <input class="form-control" type="text" name="level" placeholder=" Enter Level"> -->
+              <select class="form-control" name="level" id="level">
+                <option value=""  selected hidden>select level</option>
+                <option value="100">100</option>
+                <option value="200">200</option>
+                <option value="300">300</option>
+                <option value="400">400</option>
+              </select>
+            </div>
+          
+        </div>
+        <div class="modal-footer">
+          
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-danger">Create</button>
+          
+        </div>
+    </form>
+    </div>
+  </div>
+</div>
+
+
+<!-- Delete Modal -->
+<div class="modal fade" id="deletemodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel"><center>Delete Modal</center></h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <P>Are you sure you want to delete ?</P>
+      </div>
+      <div class="modal-footer">
+        <form action="">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-danger">Delete</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<!-- Edit Modal -->
+<div class="modal fade" id="editmodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel"><center>Edit Content</center></h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Update</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Logout Modal -->
+<div class="modal fade" id="logoutmodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel"><center>Logout Modal</center></h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Logout</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+{% endblock %}
+
+
