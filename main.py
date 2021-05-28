@@ -43,20 +43,35 @@ def index():
         email = request.form["email"]
         connection = sqlite3.connect("jjed.db")
         cursor = connection.cursor()
-        query = "SELECT intern_name FROM interns WHERE intern_name = {n}".format(n=name)
-        cursor.execute(query)
+        cursor.execute("SELECT * FROM interns WHERE intern_name=?", (name,))
+        # cursor.execute(query)
         if cursor.fetchall():
             return redirect(url_for('intern_home'))
         else:
             return redirect(url_for('index'))
     return render_template("intern_login.html")
 
+
 @app.route("/admin_home")
 def admin_home():
     return render_template("admin_home.html")
 
-@app.route("/admin_login")
+
+@app.route("/admin_login", methods=["POST","GET"])
 def admin_login():
+    if request.method == "POST":
+        name = request.form["name"]
+        email = request.form["email"]
+        password = request.form["password"]
+        connection = sqlite3.connect("jjed.db")
+        cursor = connection.cursor()
+        cursor.execute("SELECT * FROM admins WHERE admin_name=? AND admin_password=?", (name,password,))
+        # cursor.execute(query)
+        if cursor.fetchall():
+            return redirect(url_for('admin_home'))
+        else:
+            return redirect(url_for('admin_login'))
+
     return render_template("admin_login.html")
 
 @app.route("/intern_home")

@@ -51,12 +51,12 @@ finally:
         connection.close()
 
 
+sql = """ INSERT INTO interns(intern_name, intern_school,intern_level,intern_contact,intern_email)VALUES(?,?,?,?,?)"""
 
-def insert_list_data(mlist):
+def insert_list_data(mlist,sql):
     connection = sqlite3.connect("jjed.db")
     cursor = connection.cursor()
     try:
-        sql = """ INSERT INTO interns(intern_name, intern_school,intern_level,intern_contact,intern_email)VALUES(?,?,?,?,?)"""
         cursor.executemany(sql, mlist)
         connection.commit()
         print("commited")
@@ -64,6 +64,8 @@ def insert_list_data(mlist):
         print(error)
     finally:
         connection.close()
+
+        
 intern = [("mery", "University of Cape Coast", "Level 300", "0558027244", "maryakua3@gmail.com"),
          ("joshuA", "Accra Technical University", "Level 200", "0245553697", "joshua.goat19@gmail.com"),
           ("sem", "University of Cape Coast", "Level 300", "0569775844", "enochsem@gmail.com"),
@@ -71,4 +73,9 @@ intern = [("mery", "University of Cape Coast", "Level 300", "0558027244", "marya
           ("Jojo", "Ashesi University", "Level 300", "0558027244", "jojo@gmail.com")
            ]
 
-insert_list_data(intern)
+admin = [("admin", "email@admin.com", "1234"),
+         ("admin1", "email@admin1.com", "12345"),
+           ]
+#insert_list_data(intern,sql)
+sql1 = """ INSERT INTO admins(admin_name, admin_email,admin_password)VALUES(?,?,?)"""
+insert_list_data(admin,sql1)
