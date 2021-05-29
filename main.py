@@ -1,11 +1,15 @@
 """main function """
 
-from flask import Flask, render_template, url_for,  request, redirect
+from os import name
+import datetime
+
+from flask import Flask, render_template, sessions, url_for,  request, redirect, session
 import sqlite3
 
 
 
 app = Flask(__name__)
+app.config['SECRET_KEY'] = "iamIN$%^&*(swdfghjjjjjk"
 
 
 
@@ -46,6 +50,8 @@ def index():
         cursor.execute("SELECT * FROM interns WHERE intern_name=?", (name,))
         # cursor.execute(query)
         if cursor.fetchall():
+            session['name'] = name
+            session['email'] = email
             return redirect(url_for('intern_home'))
         else:
             return redirect(url_for('index'))
@@ -61,7 +67,7 @@ def admin_home():
 def admin_login():
     if request.method == "POST":
         name = request.form["name"]
-        email = request.form["email"]
+       # email = request.form["email"]
         password = request.form["password"]
         connection = sqlite3.connect("jjed.db")
         cursor = connection.cursor()
@@ -74,8 +80,24 @@ def admin_login():
 
     return render_template("admin_login.html")
 
-@app.route("/intern_home")
+
+
+@app.route("/intern_home", methods=["POST", "GET"])
 def intern_home():
+    if request.method == "POST":
+        checked = request.form['checked']
+        intern_name = session.get('name')
+        intern_email = session.get('email')
+        current_date_time = datetime.datetime.now()
+        print(intern_name)
+        print(intern_email)
+        print(current_date_time)
+
+        
+
+        
+
+    
         
     return render_template("intern_home.html")
 

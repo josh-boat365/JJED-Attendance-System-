@@ -27,9 +27,9 @@ try:
         activity_datetime DATETIME GETDATE
     )"""
 
-    create_attendance_table = """CREATE TABLE IF NOT EXISTS attandance(
+    create_attendance_table = """CREATE TABLE IF NOT EXISTS attendance(
         attendance_bool TEXT NOT NULL,
-        attendance_datetime DATETIME GETDATE,
+        attendance_datetime TEXT DEFAULT CURRENT_TIMESTAMP,
         intern_id INTEGER PRIMARY KEY,
         FOREIGN KEY (intern_id)
         REFERENCES interns (intern_id) 

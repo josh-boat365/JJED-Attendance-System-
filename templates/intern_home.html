@@ -19,7 +19,7 @@
 
                 <a href="#" class="jjed">J J E D</a>
     
-                <button>Log out</button>
+               <a href="/"><button>Log out</button></a>
             </div>
         </nav>
 
@@ -35,9 +35,9 @@
                     <!-- <div class="model">
                          <img src="./3D-illustration-pack-for-figma-4-removebg-preview.png" alt="">
                     </div> -->
-                        <form action="#">
+                        <form action="/intern_home" method="POST">
                         <div class="switch">
-                          <input id="switch-1" type="checkbox" class="switch-input" />
+                        <input onchange="this.form.submit()" id="switch-1"  type="checkbox" name="checked" class="switch-input" />
                           <label for="switch-1" class="switch-label"></label>
                         </div>
                         <span>Check In</span>
@@ -161,7 +161,6 @@
           
         </footer>
 
-        <!-- Bootstrap Bundle with Popper
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script> -->
+
 </body>
 </html>
