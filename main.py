@@ -89,9 +89,22 @@ def intern_home():
         intern_name = session.get('name')
         intern_email = session.get('email')
         current_date_time = datetime.datetime.now()
+        print(checked)
         print(intern_name)
         print(intern_email)
         print(current_date_time)
+
+    connection = sqlite3.connect("jjed.db")
+    cursor = connection.cursor()
+    try:
+        sql = """ INSERT INTO attendance(intern_id,attendance_bool,intern_name,attendance_datetime)VALUES(?,?,?,?,?)"""
+        cursor.execute(sql)
+        connection.commit()
+        print("commited")
+    except connection.Error as error:
+        print(error)
+    finally:
+        connection.close()
 
         
 

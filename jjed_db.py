@@ -28,13 +28,10 @@ try:
     )"""
 
     create_attendance_table = """CREATE TABLE IF NOT EXISTS attendance(
-        attendance_bool TEXT NOT NULL,
-        attendance_datetime TEXT DEFAULT CURRENT_TIMESTAMP,
         intern_id INTEGER PRIMARY KEY,
-        FOREIGN KEY (intern_id)
-        REFERENCES interns (intern_id) 
-        ON UPDATE CASCADE
-        ON DELETE CASCADE
+        attendance_bool TEXT NOT NULL,
+        intern_name TEXT NOT NULL,
+        attendance_datetime TEXT NOT NULL
     )"""
     cursor.execute(create_intern_table)
     connection.commit()
@@ -79,3 +76,11 @@ admin = [("admin", "email@admin.com", "1234"),
 #insert_list_data(intern,sql)
 sql1 = """ INSERT INTO admins(admin_name, admin_email,admin_password)VALUES(?,?,?)"""
 insert_list_data(admin,sql1)
+
+
+
+
+ # FOREIGN KEY (intern_id)
+        # REFERENCES interns (intern_id) 
+        # ON UPDATE CASCADE
+        # ON DELETE CASCADE
