@@ -3,6 +3,7 @@ import sqlite3
 connection = sqlite3.connect("jjed.db")
 cursor = connection.cursor()
 
+
 try:
     create_intern_table = """CREATE TABLE IF NOT EXISTS interns(
     intern_id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -29,7 +30,6 @@ try:
 
     create_attendance_table = """CREATE TABLE IF NOT EXISTS attendance(
         intern_id INTEGER PRIMARY KEY,
-        attendance_bool TEXT NOT NULL,
         intern_name TEXT NOT NULL,
         attendance_datetime TEXT NOT NULL
     )"""
@@ -76,6 +76,9 @@ admin = [("admin", "email@admin.com", "1234"),
 #insert_list_data(intern,sql)
 sql1 = """ INSERT INTO admins(admin_name, admin_email,admin_password)VALUES(?,?,?)"""
 insert_list_data(admin,sql1)
+
+
+
 
 
 
