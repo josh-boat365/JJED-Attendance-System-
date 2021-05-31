@@ -35,69 +35,72 @@
                     <!-- <div class="model">
                          <img src="./3D-illustration-pack-for-figma-4-removebg-preview.png" alt="">
                     </div> -->
-                        <form action="#">
+                    <form action="" method="POST">
                         <div class="switch">
-                          <input id="switch-1" type="checkbox" class="switch-input" />
+                        {% if isChecked %}
+                        <input disabled id="switch-1"  type="checkbox" name="checked" checked class="switch-input" />
                           <label for="switch-1" class="switch-label"></label>
+                        {% else %}
+                        <input id="switch-1" onchange="this.form.submit()"  type="checkbox" name="checked" class="switch-input" />
+                          <label for="switch-1" class="switch-label"></label>
+                        {% endif %}
                         </div>
                         <span>Check In</span>
                       </form>
                  
                
-                <div class="activity-tab">
-                    <div>
-                        <div class="titles">
-                            <img src="https://img.icons8.com/bubbles/50/000000/stretching.png"/>
-                            <h2>Activities For The Day</h2>
-                        </div>
-                        <hr>
-                        
-                        <p>
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel expedita voluptatem
-                             tempora non nisi qui ad ab numquam asperiores dolores consectetur debitis illo, 
-                             quia inventore pariatur, quidem recusandae nihil nemo vitae dolorem quod voluptate. Qui voluptatibus consectetur a section
-                             officiis quasi magnam, expedita cupiditate. Quod officiis modi doloribus? Facere, nostrum?
-                        </p>
-                    </div>
-                   
-                </div>
+                      <div class="activity-tab">
+                        <div>
+                            <div class="titles">
+                                <img src="https://img.icons8.com/bubbles/50/000000/stretching.png"/>
+                                <h2>Activities For The Day</h2>
+                            </div>
+                            <hr>
     
-                <div class="zoom-links-tab">
-                    <div>
-
-                        <div class="titles">
-                            <img src="https://img.icons8.com/cute-clipart/64/000000/external-link.png"/>
-                            <h2>Link To Zoom Call</h2>
-                        </div>
-                        <hr>
-                        
-                        <p>
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-                            Velit maiores cupiditate ipsa accusamus minima! Minus enim 
-                            commodi tenetur aspernatur 
-                            consequuntur pariatur numquam repudiandae magni et.
-                        </p>
-                    </div>
-                </div>
+                            {% for activity in activities %}
+                            <p>
+                                {{activity}}
+                            </p>
+                            {% endfor %}
     
-                <div class="lab-links-tab">
-                    <div>
-                        <div class="titles">
-                            <img src="https://img.icons8.com/fluent/48/000000/lab-items.png"/>
-                            <h2>Links To Labs For The Day</h2>
                         </div>
-                        <hr>
-                        <p>
-                            
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-                            Esse iusto, animi, et aliquam architecto doloremque soluta 
-                            ercitationem sit praesentium qui maiores ratione id 
-                            deleniti quisquam aspernatur saepe at. Porro, quibusdam.
+                       
+                    </div>
         
-                        </p>
+                    <div class="zoom-links-tab">
+                        <div>
+    
+                            <div class="titles">
+                                <img src="https://img.icons8.com/cute-clipart/64/000000/external-link.png"/>
+                                <h2>Link To Zoom Call</h2>
+                            </div>
+                            <hr>
+                            
+                            {% for zoom_link in zoom_links %}
+                            <p>
+                               {{zoom_link}}
+                            </p>
+                            {% endfor %}
+                        </div>
                     </div>
-                </div>
-            </section>
+        
+                    <div class="lab-links-tab">
+                        <div>
+                            <div class="titles">
+                                <img src="https://img.icons8.com/fluent/48/000000/lab-items.png"/>
+                                <h2>Links To Labs For The Day</h2>
+                            </div>
+                            <hr>
+    
+                            {% for lab_link in lab_links %}
+                            <p>
+                                {{lab_link}}    
+                            </p>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </section>
+        
     
             <aside class="aside-section">
                 <div>
