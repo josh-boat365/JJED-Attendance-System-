@@ -43,6 +43,7 @@ def index():
     if request.method == "POST":
         name = request.form["name"]
         email = request.form["email"]
+        session['username'] = name
         db = DB()
         response = db.authentication("interns", "intern_name", name, "intern_email", email)
         if response == True:
