@@ -116,6 +116,11 @@ def intern_home():
 
     return render_template("intern_home.html", isChecked=True if isChecked=='on' else False)
 
+@app.route('/log_out')
+def logout():
+    session.pop['name', None]
+    return redirect('/')
+
 
 if __name__ == "__main__":
     app.run(debug=True)
