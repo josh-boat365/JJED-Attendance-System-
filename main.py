@@ -208,8 +208,6 @@ def intern_home():
 
 @app.route("/logout")
 def logout():
-    session["username"] = None
-    # or
     session.pop('username', default=None)
     return redirect("/")
 
