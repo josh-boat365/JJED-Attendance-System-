@@ -82,7 +82,7 @@ form a, center a{
   .error{color: red;}
 
 /* checkbox on login page  */
- .checkbox_login .cbx {
+ /* .checkbox_login .cbx {
     margin: auto;
     -webkit-user-select: none;
     user-select: none;
@@ -156,5 +156,5 @@ form a, center a{
     50% {
       transform: scale(0.9);
     }
-  }
+  } */
 
