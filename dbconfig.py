@@ -7,9 +7,6 @@ class DB():
         self.con = sqlite3.connect("jjed.db")
         self.cur = self.con.cursor()
 
-    def connection(self):
-        # con = sqlite3.connect("jjed.db")
-        return con
 
     def select(self,tb_name,name,email):
         self.cur.execute("SELECT * FROM {} WHERE intern_name=? AND intern_email=?".format(tb_name), (name,email))
@@ -20,8 +17,6 @@ class DB():
         self.cur.execute("SELECT * FROM {} WHERE {}=? AND {}=?".format(tb_name,col_name1,col_name2), (data1,data2))
         data = self.cur.fetchall()
         if len(data) > 0:
-            session['username'] = data1
-            session['passwowrd'] = data2
             return True
         return False
     
