@@ -4,7 +4,7 @@ from os import name
 import datetime
 
 from flask import Flask, render_template, sessions, url_for,  request, redirect, session
-import sqlite3
+import sqlite3 
 
 
 
@@ -66,8 +66,16 @@ def index():
     return render_template("intern_login.html")
 
 
-@app.route("/admin_home")
+@app.route("/admin_home", methods = ['POST','GET'])
 def admin_home():
+    if request.method == 'POST':
+        title = request.form['title'][:]
+        content = request.form['content']
+        connection = sqlite3.connect("jjed.db")
+        cur = connection.cursor()
+        cur.execute("INSERT INTO activities (activity_title,activity_content) VALUES (?,?)",(title,content) )
+        connection.commit()
+        return redirect('/admin_home')
     return render_template("admin_home.html")
 
 
@@ -116,6 +124,8 @@ def intern_home():
 
     return render_template("intern_home.html", isChecked=True if isChecked=='on' else False)
 
+
+        
 
 if __name__ == "__main__":
     app.run(debug=True)

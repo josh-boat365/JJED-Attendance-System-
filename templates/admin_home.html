@@ -58,7 +58,7 @@
         <div id="controls">
           <!-- add card headers -->
             <div id="create" class="mycard">
-                <form action="">
+                <form  method = 'POST'>
                     <div class="form-group">
                         <!-- <input type="text"  placeholder="Enter Title"> -->
                         <select class="form-control" id="title" name="title" id="title">
@@ -71,9 +71,9 @@
                     </div>
             
                     <div class="form-group">
-                        <input type="text" class="form-control" id="content" placeholder="Enter Content">
+                        <input type="text" class="form-control" name = "content" id="content" placeholder="Enter Content">
                     </div>
-                    <center><button type="button" class="btn btn-primary">Create</button></center>
+                    <center><button type="submit" class="btn btn-primary">Create</button></center>
                 </form>
             </div>
 
