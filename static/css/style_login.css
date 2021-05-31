@@ -1,12 +1,14 @@
+@font-face {
+    font-family: nunito;
+    src: url('../fonts/nunito/Nunito-Regular.ttf');
+}
 *{
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: nunito;
 }
 
 body{
     margin-top: 0px;
-    background-color: rgb(240, 240, 240)
-
-    ;
+    background-color: rgb(240, 240, 240);
 }
   
 .container{
@@ -78,3 +80,81 @@ form a, center a{
 
   /* enoch is testing this */
   .error{color: red;}
+
+/* checkbox on login page  */
+ .checkbox_login .cbx {
+    margin: auto;
+    -webkit-user-select: none;
+    user-select: none;
+    cursor: pointer;
+  }
+  .checkbox_login .prompt{
+      font-weight: 700;
+  }
+ .checkbox_login .cbx span {
+    display: inline-block;
+    vertical-align: middle;
+    transform: translate3d(0, 0, 0);
+  }
+ .checkbox_login .cbx span:first-child {
+    position: relative;
+    width: 18px;
+    height: 18px;
+    border-radius: 3px;
+    transform: scale(1);
+    vertical-align: middle;
+    border: 1px solid #9098A9;
+    transition: all 0.2s ease;
+  }
+ .checkbox_login .cbx span:first-child svg {
+    position: absolute;
+    top: 3px;
+    left: 2px;
+    fill: none;
+    stroke: #FFFFFF;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-dasharray: 16px;
+    stroke-dashoffset: 16px;
+    transition: all 0.3s ease;
+    transition-delay: 0.1s;
+    transform: translate3d(0, 0, 0);
+  }
+.checkbox_login  .cbx span:first-child:before {
+    content: "";
+    width: 100%;
+    height: 100%;
+    background: rgb(223, 172, 34);
+    display: block;
+    transform: scale(0);
+    opacity: 1;
+    border-radius: 50%;
+  }
+.checkbox_login  .cbx span:last-child {
+    padding-left: 8px;
+  }
+.checkbox_login  .cbx:hover span:first-child {
+    border-color: #506EEC;
+  }
+  
+.checkbox_login  .inp-cbx:checked + .cbx span:first-child {
+    background: rgb(223, 172, 34);
+    border-color: rgb(223, 172, 34);
+    animation: wave 0.4s ease;
+  }
+ .checkbox_login .inp-cbx:checked + .cbx span:first-child svg {
+    stroke-dashoffset: 0;
+  }
+.checkbox_login .inp-cbx:checked + .cbx span:first-child:before {
+    transform: scale(3.5);
+    opacity: 0;
+    transition: all 0.6s ease;
+  }
+  
+  @keyframes wave {
+    50% {
+      transform: scale(0.9);
+    }
+  }
+
