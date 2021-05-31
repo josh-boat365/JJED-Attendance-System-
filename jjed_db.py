@@ -28,14 +28,10 @@ try:
     )"""
         # self.cur.execute("INSERT INTO activities(activity_title,activity_content) VALUES(?,?)",(data1,data2))
 
-    create_attendance_table = """CREATE TABLE IF NOT EXISTS attandance(
-        attendance_bool TEXT NOT NULL,
-        attendance_datetime DATETIME GETDATE,
+    create_attendance_table = """CREATE TABLE IF NOT EXISTS attendance(
         intern_id INTEGER PRIMARY KEY,
-        FOREIGN KEY (intern_id)
-        REFERENCES interns (intern_id) 
-        ON UPDATE CASCADE
-        ON DELETE CASCADE
+        intern_name TEXT NOT NULL,
+        attendance_datetime TEXT NOT NULL
     )"""
     cursor.execute(create_intern_table)
     connection.commit()
