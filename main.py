@@ -84,8 +84,8 @@ def admin_home():
     activities = db.select_all("activities")
     lenght = len(activities)
 
-    interns = db.select_all("interns")
-    lenght_interns = len(interns)
+    attendance = db.select_all("attendance")
+    lenght_attendance = len(attendance)
     
     #creating and inserting activities
     if request.method == "POST":
@@ -113,7 +113,7 @@ def admin_home():
         
 
     
-    return render_template("admin_home.html", activities = activities, lenght=lenght, interns =interns, lenght_interns=lenght_interns)
+    return render_template("admin_home.html", activities = activities, lenght=lenght, attendance = attendance, lenght_attendance=lenght_attendance)
 
 
 @app.route("/admin_home/<edit_id>", methods=["POST","GET"])
