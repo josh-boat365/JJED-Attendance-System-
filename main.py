@@ -180,29 +180,33 @@ def intern_home():
             connection.close()
 
 
-    connection = sqlite3.connect("jjed.db")
-    cursor = connection.cursor()
+    # connection = sqlite3.connect("jjed.db")
+    # cursor = connection.cursor()
+    db = DB()
+    activities = db.select_all("activities")
     
-    activity_query = """SELECT * FROM activities WHERE activity_title ='Activity'  """
-    lab_link_query = """SELECT * FROM activities WHERE activity_title ='Lab link'  """
-    zoom_link_query = """SELECT * FROM activities WHERE activity_title ='Zoom Link'  """
-    quick_query = """SELECT * FROM activities WHERE activity_title ='Quick Notes'  """
     
-    cursor.execute(activity_query)
-    activities = cursor.fetchall()
+    # activity_query = """SELECT * FROM activities   """
+    # lab_link_query = """SELECT * FROM activities WHERE activity_title ='Lab link'  """
+    # zoom_link_query = """SELECT * FROM activities WHERE activity_title ='Zoom Link'  """
+    # quick_query = """SELECT * FROM activities WHERE activity_title ='Quick Notes'  """
     
-    cursor.execute(lab_link_query)
-    lab_links = cursor.fetchall()
+    # cursor.execute(activity_query)
+    # activities = cursor.fetchall()
+    length_result = len(activities)
     
-    cursor.execute(zoom_link_query)
-    zoom_links = cursor.fetchall()
+    # cursor.execute(lab_link_query)
+    # lab_links = cursor.fetchall()
     
-    cursor.execute(quick_query)
-    quick_notes = cursor.fetchall()
+    # cursor.execute(zoom_link_query)
+    # zoom_links = cursor.fetchall()
     
-    connection.close()
+    # cursor.execute(quick_query)
+    # quick_notes = cursor.fetchall()
     
-    return render_template("intern_home.html", isChecked=True if isChecked=='on' else False, activities = activities, lab_links = lab_links, zoom_links = zoom_links, quick_notes= quick_notes)
+    # connection.close()
+    
+    return render_template("intern_home.html", isChecked=True if isChecked=='on' else False, activities = activities, length=length_result)
 
 
 
