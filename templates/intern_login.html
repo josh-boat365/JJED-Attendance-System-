@@ -15,29 +15,30 @@
             <img src="/static/images/turntabl.gif" alt="turntabl" class="avatar"  style="width:200px ;height:200px">
           </div> <br> <br>
         <form action="" method = "POST" >
-          <label for="name"><b>Intern</b></label><br><br>
+          <label for="name"><b>Log In</b></label><br><br>
           {% if error == False %}
           <center><p class="error">Incorrect username or password</p></center>
           {% endif %}
-          <input type="text" placeholder="INTERN NAME" name="name" required><br>
-          <input type="email" placeholder="INTERN EMAIL" name="email" required><br>
+          <input type="text" placeholder="Enter username" name="name" required><br>
+          <input type="text" placeholder="Enter password" name="password" required><br>
           <button type="submit">LOGIN </button><br><br>
           <span class="text"> Are you an <a href="/admin_login"> Admin? </a></span><br><br>
+
+            <!-- <div class="checkbox_login"> -->
+              
+                <input class="inp-cbx" id="cbx" type="checkbox" style="display: none" name="checked"  checked hidden="hidden"/>
+                <!-- <label class="cbx" for="cbx">
+              <span>
+                  <svg width="12px" height="10px" viewbox="0 0 12 10">
+                  <polyline points="1.5 6 4.5 9 10.5 1"></polyline></svg>
+              </span><span class="prompt">For Admins Only</span></label>
+              
+            </div> -->
+        
         </form>
         </center>
         </div><br>
 
-      <center>
-        <div class="checkbox_login">
-          <form action="" method="POST">
-            <input class="inp-cbx" id="cbx" type="checkbox" style="display: none"/>
-             <label class="cbx" for="cbx">
-          <span>
-              <svg width="12px" height="10px" viewbox="0 0 12 10">
-              <polyline points="1.5 6 4.5 9 10.5 1"></polyline></svg>
-          </span><span class="prompt">For Admins Only</span></label>
-          </form>
-        </div>
-      </center>
+    
 </body>
 </html>

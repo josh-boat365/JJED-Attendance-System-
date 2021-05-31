@@ -42,14 +42,26 @@ def update_db():
 @app.route("/", methods=["POST","GET"])
 def index():
     response = None
+    isAdmin = True
+    isChecked = None
     if request.method == "POST":
-        name = request.form["name"]
-        email = request.form["email"]
-        session['username'] = name
         db = DB()
-        response = db.authentication("interns", "intern_name", name, "intern_email", email)
+        name = request.form["name"]
+        password = request.form["password"]
+        # isChecked = request.form['checked'] 
+        print(type(isChecked),isChecked)
+        if request.form['checked'] == "on":
+            session['username'] = name
+            response = db.authentication("admins", "admin_name", name, "admin_password", password)
+            if response == True:
+                return redirect(url_for('admin_home'))
+         
+        session['username'] = name
+        response = db.authentication("interns", "intern_name", name, "	intern_contact", password)
         if response == True:
             return redirect(url_for('intern_home'))
+
+
     return render_template("intern_login.html", error = response)
 
 
@@ -179,32 +191,9 @@ def intern_home():
         finally:
             connection.close()
 
-
-    # connection = sqlite3.connect("jjed.db")
-    # cursor = connection.cursor()
     db = DB()
     activities = db.select_all("activities")
-    
-    
-    # activity_query = """SELECT * FROM activities   """
-    # lab_link_query = """SELECT * FROM activities WHERE activity_title ='Lab link'  """
-    # zoom_link_query = """SELECT * FROM activities WHERE activity_title ='Zoom Link'  """
-    # quick_query = """SELECT * FROM activities WHERE activity_title ='Quick Notes'  """
-    
-    # cursor.execute(activity_query)
-    # activities = cursor.fetchall()
     length_result = len(activities)
-    
-    # cursor.execute(lab_link_query)
-    # lab_links = cursor.fetchall()
-    
-    # cursor.execute(zoom_link_query)
-    # zoom_links = cursor.fetchall()
-    
-    # cursor.execute(quick_query)
-    # quick_notes = cursor.fetchall()
-    
-    # connection.close()
     
     return render_template("intern_home.html", isChecked=True if isChecked=='on' else False, activities = activities, length=length_result)
 
