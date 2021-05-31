@@ -3,7 +3,7 @@
 import datetime
 
 from dbconfig import DB
-from flask import Flask, render_template, url_for,  request, redirect, session
+from flask import Flask, render_template, url_for,  request, redirect, session, json
 import sqlite3
 
 
@@ -172,12 +172,16 @@ def intern_home():
         return redirect(url_for("index"))
 
     isChecked=False
+    global intern_name
+    global current_date_time
+    attendance = []
+    activities = []
+    length_result = 0
     if request.method == "POST":
-        global intern_name
-        global current_date_time
         isChecked = request.form['checked']
         intern_name = session.get("username")
         current_date_time = datetime.datetime.now()
+<<<<<<< HEAD
         
         connection = sqlite3.connect("jjed.db")
         cursor = connection.cursor()
@@ -196,6 +200,17 @@ def intern_home():
     length_result = len(activities)
     
     return render_template("intern_home.html", isChecked=True if isChecked=='on' else False, activities = activities, length=length_result)
+=======
+        db = DB()
+        #post attendance db
+        attendance = db.insert("attendance","intern_name","attendance_datetime",intern_name,current_date_time)
+       
+       #fetch data from db to intern_home
+        activities = db.select_all("activities")
+        length_result = len(activities)
+    
+    return render_template("intern_home.html", isChecked=True if isChecked=='on' else False, activities = activities, length=length_result, attendance= attendance)
+>>>>>>> c763d2ee7b14c13124079d862c1bb0791d89b2d6
 
 
 
