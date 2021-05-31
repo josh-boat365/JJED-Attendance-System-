@@ -51,21 +51,18 @@
                       </tr>
                   </thead>
                   <tbody>
-                    {% for intern in range(lenght_interns)%}
+                    {% for intern in range(lenght_attendance)%}
                       <tr>
-                          <td>{{interns[intern][1]}}</td>
-                          <td>present<i class="fa fa-check text-success" aria-hidden="true"></i></td>
-                          <td>8:00 am</td>
+                          <td>{{attendance[intern][1]}}</td>
+                          <td><i class="fa fa-check text-success" aria-hidden="true"></i></td>
+                          <td>{{attendance[intern][2]}}</td>
                       </tr>
+                      {%else%}
+                      <tr>
+                        <td>No Student present</td>
+                    </tr>
                       {% endfor%}
-                      <tr>
-                          <td>Row 1 Data 1</td>
-                          <td><i class="fa fa-check text-success" aria-hidden="true"></i></td>
-                      </tr>
-                      <tr>
-                          <td>Row 1 Data 1</td>
-                          <td><i class="fa fa-check text-success" aria-hidden="true"></i></td>
-                      </tr>
+                      
                   </tbody>
               </table>
             </div>

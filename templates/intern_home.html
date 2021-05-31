@@ -59,10 +59,12 @@
                             </div>
                             <hr>
     
-                            {% for activity in activities %}
+                            {% for activity in range(length) %}
+                            {%if "Activity" in activities[activity][1] %}
                             <p>
-                                {{activity}}
+                                <strong>{{activities[activity][2]}}</strong> <small>{{activities[activity][3]}}</small>
                             </p>
+                            {% endif %}
                             {% endfor %}
     
                         </div>
@@ -78,11 +80,15 @@
                             </div>
                             <hr>
                             
-                            {% for zoom_link in zoom_links %}
+                            
+                            {% for activity in range(length) %}
+                            {%if "Zoom Link" in activities[activity][1] %}
                             <p>
-                               {{zoom_link}}
+                                <strong>{{activities[activity][2]}}</strong> <small>{{activities[activity][3]}}</small>
                             </p>
+                            {% endif %}
                             {% endfor %}
+    
                         </div>
                     </div>
         
@@ -94,11 +100,15 @@
                             </div>
                             <hr>
     
-                            {% for lab_link in lab_links %}
+                            {% for activity in range(length) %}
+                            {%if "Lab link" in activities[activity][1] %}
                             <p>
-                                {{lab_link}}    
+                                <strong>{{activities[activity][2]}}</strong> <small>{{activities[activity][3]}}</small>
                             </p>
+                            {% endif %}
                             {% endfor %}
+    
+                            
                         </div>
                     </div>
                 </section>
@@ -161,6 +171,9 @@
                 </div>
                 <div class="copy-2">
                     Copyright &copy; Allrights Reserved - 2021 
+                </div>
+                <div class="copy-3">
+                    Interns Attendance Management System
                 </div>
             </div>
           
