@@ -3,7 +3,7 @@
 import datetime
 
 from dbconfig import DB
-from flask import Flask, render_template, url_for,  request, redirect, session
+from flask import Flask, render_template, url_for,  request, redirect, session, json
 import sqlite3
 
 
@@ -160,53 +160,24 @@ def intern_home():
         return redirect(url_for("index"))
 
     isChecked=False
+    global intern_name
+    global current_date_time
+    attendance = []
+    activities = []
+    length_result = 0
     if request.method == "POST":
-        global intern_name
-        global current_date_time
         isChecked = request.form['checked']
         intern_name = session.get("username")
         current_date_time = datetime.datetime.now()
-        
-        connection = sqlite3.connect("jjed.db")
-        cursor = connection.cursor()
-        try:
-            sql = """ INSERT INTO attendance(intern_name,attendance_datetime)VALUES(?,?)"""
-            cursor.execute(sql,[intern_name,current_date_time])
-            connection.commit()
-            print("inserted")
-        except connection.Error as error:
-            print(error)
-        finally:
-            connection.close()
-
-
-    # connection = sqlite3.connect("jjed.db")
-    # cursor = connection.cursor()
-    db = DB()
-    activities = db.select_all("activities")
+        db = DB()
+        #post attendance db
+        attendance = db.insert("attendance","intern_name","attendance_datetime",intern_name,current_date_time)
+       
+       #fetch data from db to intern_home
+        activities = db.select_all("activities")
+        length_result = len(activities)
     
-    
-    # activity_query = """SELECT * FROM activities   """
-    # lab_link_query = """SELECT * FROM activities WHERE activity_title ='Lab link'  """
-    # zoom_link_query = """SELECT * FROM activities WHERE activity_title ='Zoom Link'  """
-    # quick_query = """SELECT * FROM activities WHERE activity_title ='Quick Notes'  """
-    
-    # cursor.execute(activity_query)
-    # activities = cursor.fetchall()
-    length_result = len(activities)
-    
-    # cursor.execute(lab_link_query)
-    # lab_links = cursor.fetchall()
-    
-    # cursor.execute(zoom_link_query)
-    # zoom_links = cursor.fetchall()
-    
-    # cursor.execute(quick_query)
-    # quick_notes = cursor.fetchall()
-    
-    # connection.close()
-    
-    return render_template("intern_home.html", isChecked=True if isChecked=='on' else False, activities = activities, length=length_result)
+    return render_template("intern_home.html", isChecked=True if isChecked=='on' else False, activities = activities, length=length_result, attendance= attendance)
 
 
 
