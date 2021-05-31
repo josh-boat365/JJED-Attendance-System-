@@ -181,26 +181,6 @@ def intern_home():
         isChecked = request.form['checked']
         intern_name = session.get("username")
         current_date_time = datetime.datetime.now()
-<<<<<<< HEAD
-        
-        connection = sqlite3.connect("jjed.db")
-        cursor = connection.cursor()
-        try:
-            sql = """ INSERT INTO attendance(intern_name,attendance_datetime)VALUES(?,?)"""
-            cursor.execute(sql,[intern_name,current_date_time])
-            connection.commit()
-            print("inserted")
-        except connection.Error as error:
-            print(error)
-        finally:
-            connection.close()
-
-    db = DB()
-    activities = db.select_all("activities")
-    length_result = len(activities)
-    
-    return render_template("intern_home.html", isChecked=True if isChecked=='on' else False, activities = activities, length=length_result)
-=======
         db = DB()
         #post attendance db
         attendance = db.insert("attendance","intern_name","attendance_datetime",intern_name,current_date_time)
@@ -210,7 +190,6 @@ def intern_home():
         length_result = len(activities)
     
     return render_template("intern_home.html", isChecked=True if isChecked=='on' else False, activities = activities, length=length_result, attendance= attendance)
->>>>>>> c763d2ee7b14c13124079d862c1bb0791d89b2d6
 
 
 
