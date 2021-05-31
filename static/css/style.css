@@ -4,12 +4,11 @@ header{
     display: flex;
     align-items: center;
     justify-content: space-between;
-    position: relative;
 
 }
 .add_intern button{
-    position: absolute;
-    bottom: 40px;
+    position: fixed;
+    bottom: 120px;
     right: 28px;
     width: 60px;
     height: 60px;
@@ -34,6 +33,7 @@ footer{
 }
 
 body{
+    border: 1px rgb(140, 41, 160) solid;
     width: 100%;
     margin: 0px;
     padding: 0px;

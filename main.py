@@ -61,13 +61,12 @@ def admin_home():
 def admin_login():
     if request.method == "POST":
         name = request.form["name"]
-        email = request.form["email"]
         password = request.form["password"]
         connection = sqlite3.connect("jjed.db")
         cursor = connection.cursor()
         cursor.execute("SELECT * FROM admins WHERE admin_name=? AND admin_password=?", (name,password,))
-        # cursor.execute(query)
-        if cursor.fetchall():
+        row = cursor.fetchall()
+        if row:
             return redirect(url_for('admin_home'))
         else:
             return redirect(url_for('admin_login'))
