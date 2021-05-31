@@ -3,7 +3,6 @@ import sqlite3
 connection = sqlite3.connect("jjed.db")
 cursor = connection.cursor()
 
-
 try:
     create_intern_table = """CREATE TABLE IF NOT EXISTS interns(
     intern_id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -27,11 +26,16 @@ try:
         activity_content TEXT NOT NULL,
         activity_datetime DATETIME GETDATE
     )"""
+        # self.cur.execute("INSERT INTO activities(activity_title,activity_content) VALUES(?,?)",(data1,data2))
 
-    create_attendance_table = """CREATE TABLE IF NOT EXISTS attendance(
+    create_attendance_table = """CREATE TABLE IF NOT EXISTS attandance(
+        attendance_bool TEXT NOT NULL,
+        attendance_datetime DATETIME GETDATE,
         intern_id INTEGER PRIMARY KEY,
-        intern_name TEXT NOT NULL,
-        attendance_datetime TEXT NOT NULL
+        FOREIGN KEY (intern_id)
+        REFERENCES interns (intern_id) 
+        ON UPDATE CASCADE
+        ON DELETE CASCADE
     )"""
     cursor.execute(create_intern_table)
     connection.commit()
@@ -76,14 +80,3 @@ admin = [("admin", "email@admin.com", "1234"),
 #insert_list_data(intern,sql)
 sql1 = """ INSERT INTO admins(admin_name, admin_email,admin_password)VALUES(?,?,?)"""
 insert_list_data(admin,sql1)
-
-
-
-
-
-
-
- # FOREIGN KEY (intern_id)
-        # REFERENCES interns (intern_id) 
-        # ON UPDATE CASCADE
-        # ON DELETE CASCADE

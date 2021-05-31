@@ -1,15 +1,12 @@
-@font-face {
-    font-family: nunito;
-    src: url('../fonts/nunito/Nunito-Regular.ttf');
-}
-
 *{
-    font-family: nunito;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 body{
     margin-top: 0px;
-    background-color: rgb(240, 240, 240);
+    background-color: rgb(240, 240, 240)
+
+    ;
 }
   
 .container{
@@ -78,3 +75,6 @@ form a, center a{
     color: rgb(223, 172, 34);
     font-weight: 600;
 }
+
+  /* enoch is testing this */
+  .error{color: red;}
