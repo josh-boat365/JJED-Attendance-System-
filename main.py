@@ -75,7 +75,6 @@ def admin_home():
 def admin_login():
     if request.method == "POST":
         name = request.form["name"]
-       # email = request.form["email"]
         password = request.form["password"]
         connection = sqlite3.connect("jjed.db")
         cursor = connection.cursor()
@@ -92,17 +91,13 @@ def admin_login():
 
 @app.route("/intern_home", methods=["POST", "GET"])
 def intern_home():
+    isChecked=False
     if request.method == "POST":
         global intern_name
         global current_date_time
-        #checked = request.form['checked']
+        isChecked = request.form['checked']
         intern_name = session.get('name')
-        #intern_email = session.get('email')
         current_date_time = datetime.datetime.now()
-        # print(checked)
-        #print(intern_name)
-        # print(intern_email)
-        #print(current_date_time)
         
 
         connection = sqlite3.connect("jjed.db")
@@ -119,7 +114,7 @@ def intern_home():
 
 
 
-    return render_template("intern_home.html")
+    return render_template("intern_home.html", isChecked=True if isChecked=='on' else False)
 
 
 if __name__ == "__main__":
