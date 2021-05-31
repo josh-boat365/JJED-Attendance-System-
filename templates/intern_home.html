@@ -56,13 +56,13 @@
                             <h2>Activities For The Day</h2>
                         </div>
                         <hr>
-                        
+
+                        {% for activity in activities %}
                         <p>
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel expedita voluptatem
-                             tempora non nisi qui ad ab numquam asperiores dolores consectetur debitis illo, 
-                             quia inventore pariatur, quidem recusandae nihil nemo vitae dolorem quod voluptate. Qui voluptatibus consectetur a section
-                             officiis quasi magnam, expedita cupiditate. Quod officiis modi doloribus? Facere, nostrum?
+                            {{activity}}
                         </p>
+                        {% endfor %}
+
                     </div>
                    
                 </div>
@@ -76,12 +76,11 @@
                         </div>
                         <hr>
                         
+                        {% for zoom_link in zoom_links %}
                         <p>
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-                            Velit maiores cupiditate ipsa accusamus minima! Minus enim 
-                            commodi tenetur aspernatur 
-                            consequuntur pariatur numquam repudiandae magni et.
+                           {{zoom_link}}
                         </p>
+                        {% endfor %}
                     </div>
                 </div>
     
@@ -92,14 +91,12 @@
                             <h2>Links To Labs For The Day</h2>
                         </div>
                         <hr>
+
+                        {% for lab_link in lab_links %}
                         <p>
-                            
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-                            Esse iusto, animi, et aliquam architecto doloremque soluta 
-                            ercitationem sit praesentium qui maiores ratione id 
-                            deleniti quisquam aspernatur saepe at. Porro, quibusdam.
-        
+                            {{lab_link}}    
                         </p>
+                        {% endfor %}
                     </div>
                 </div>
             </section>
