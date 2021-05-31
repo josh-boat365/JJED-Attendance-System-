@@ -12,16 +12,25 @@
 <header id="myheader">
     
   <ul class="avatar">
-    <li><img class="side_image" src="{{url_for('static',filename = 'images/avatar.png')}}" alt="avatar"></li>
-    <li><p>Admin</p></li>
+    <li>
+      <img class="side_image" src="{{url_for('static',filename = 'images/turntabl.gif')}}" alt="avatar">
+    </li>
+    <li><p>Turntabl</p></li>
   </ul>
     <center>
-      Admin Dashboard
+      <strong>JJED</strong>
     </center>
-    <button type="button" class="btn" data-toggle="modal" data-target="#logoutmodal">
-      log out
-      <i class="fa fa-sign-out" aria-hidden="true"></i>
-    </button>
+    <ul class="avatar">
+      <li><strong>{{session.get("username")}}</strong></li><br>
+      <li>
+        
+          <button type="button" class="btn" data-toggle="modal" data-target="#logoutmodal">
+            log out
+            <i class="fa fa-sign-out" aria-hidden="true"></i>
+          </button>
+        
+      </li>
+    </ul>
 </header>
 {% endblock %}
 
@@ -29,39 +38,46 @@
 {% block body %}
     <div class="main">
 
-        <div id="side" class="mycard scroll">
-            <table id="mainTable" class="table">
-                <thead>
-                    <tr>
-                        <th>Names</th>
-                        <th>Status</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>Row 1 Data 1</td>
-                        <td><i class="fa fa-check text-success" aria-hidden="true"></i></td>
-                    </tr>
-                    <tr>
-                        <td>Row 1 Data 1</td>
-                        <td><i class="fa fa-check text-success" aria-hidden="true"></i></td>
-                    </tr>
-                    <tr>
-                        <td>Row 1 Data 1</td>
-                        <td><i class="fa fa-check text-success" aria-hidden="true"></i></td>
-                    </tr>
-                </tbody>
-            </table>
+        <div id="side" class="mycard">
+          <div class="mycard_title">Attendance Status</div>
+            <div class="side_scroll">
+              <table id="mainTable" class="table">
+                  <thead>
+                      <tr>
+                          <th>Names</th>
+                          <th>Status</th>
+                          <th>Time</th>
+                      </tr>
+                  </thead>
+                  <tbody>
+                    {% for intern in range(lenght_interns)%}
+                      <tr>
+                          <td>{{interns[intern][1]}}</td>
+                          <td>present<i class="fa fa-check text-success" aria-hidden="true"></i></td>
+                          <td>8:00 am</td>
+                      </tr>
+                      {% endfor%}
+                      <tr>
+                          <td>Row 1 Data 1</td>
+                          <td><i class="fa fa-check text-success" aria-hidden="true"></i></td>
+                      </tr>
+                      <tr>
+                          <td>Row 1 Data 1</td>
+                          <td><i class="fa fa-check text-success" aria-hidden="true"></i></td>
+                      </tr>
+                  </tbody>
+              </table>
+            </div>
         </div>
 
 
         <div id="controls">
           <!-- add card headers -->
             <div id="create" class="mycard">
-                <form  method = 'POST'>
+                <form action="" method="POST">
                     <div class="form-group">
                         <!-- <input type="text"  placeholder="Enter Title"> -->
-                        <select class="form-control" id="title" name="title" id="title">
+                        <select class="form-control" name="title" id="title">
                           <option value=""  selected hidden>select an activity</option>
                           <option value="Activity">Activity</option>
                           <option value="Zoom Link">Zoom Link</option>
@@ -71,58 +87,54 @@
                     </div>
             
                     <div class="form-group">
-                        <input type="text" class="form-control" name = "content" id="content" placeholder="Enter Content">
+                        <input type="text" class="form-control" id="content" name="content" placeholder="Enter Content">
                     </div>
-                    <center><button type="submit" class="btn btn-primary">Create</button></center>
+                    <center>
+                      <input class="btn btn-primary" type = "submit" value = "Create activity" name = "submit">
+                      <!-- <button type="submit" class="btn btn-primary">Create</button> -->
+                    </center>
                 </form>
             </div>
 
             
 
-            <div id="view" class="mycard scroll">
-
+            <div id="view" class="mycard ">
+              <div class="mycard_title">Activities</div>
+              <div class="view_scroll">
+                {% for activity in range(lenght) %}
               <div class="data border_left_brown">
                 <ul class="avatar">
-                  <li>Git and Github as a distributed version control system</li>
-                  <li>
-                    <form action="" method="">
-                      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#editmodal">
+                  <li><small>{{activities[activity][1]}}</small></li>
+                  <li>{{activities[activity][2]}}</li>
+                  <!-- <li>
+                    <form action="/admin_home/edit_id" method="POST">
+                      <input type="text" value="{{activities[activity][0]}}" name="id" hidden>
+                      <button type="submit"  class="btn btn-primary" data-toggle="modal" data-target="#editmodal">
                           <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
                         </button>
                   </form>
-                  </li>
+                  </li> -->
                   <br>
                   <li>
-                    <form action="" method="">
-                      <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#deletemodal">
+                    <form action="" method="POST">
+                      <input type="text" value="{{activities[activity][0]}}" name="delete_id" hidden>
+                      <input class="btn btn-danger" type = "submit" value = "Delete" name = "submit">
+                      <!-- <button type="submit" class="btn btn-danger" > -->
                           <i class="fa fa-trash-o " aria-hidden="true"></i>
                         </button>
                   </form>
                   </li>
                 </ul>
               </div>
-
+              {% else %}
               <div class="data border_left_red">
                 <ul class="avatar">
-                  <li>Git and Github as a distributed version control system</li>
-                  <li>
-                    <form action="" method="">
-                      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#editmodal">
-                          <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
-                        </button>
-                  </form>
-                  </li>
+                  <li>No activities added</li>
                   <br>
-                  <li>
-                    <form action="" method="">
-                      <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#deletemodal">
-                          <i class="fa fa-trash-o " aria-hidden="true"></i>
-                        </button>
-                  </form>
-                  </li>
+                  <li><small>create an activity</small></li>
                 </ul>
               </div>
-
+              {% endfor %}
                 <!-- <table id="" class="table">
                     <tbody>
                         <tr>
@@ -150,6 +162,7 @@
                         </tr>
                     </tbody> -->
                 </table>
+              </div>
             </div>
         </div>
 
@@ -157,8 +170,9 @@
 <div class="clear"></div>
 
 
+<!-- floating action button -->
 <div class="add_intern">
-  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#createmodal">
+  <button type="submint" value="Add" class="btn btn-primary" data-toggle="modal" data-target="#createmodal">
     <i class="fa fa-plus" aria-hidden="true"></i>
   </button>
 </div>
@@ -175,7 +189,7 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <form action="#">
+      <form action="" method="POST" >
         <div class="modal-body">
 
             <div class="form-group">
@@ -183,7 +197,15 @@
             </div>
 
             <div class="form-group">
-              <input name="office" type="text" class="form-control form-control-user" placeholder="Enter Scchool">
+              <input class="form-control" type="text" name="contact" placeholder=" Enter Intern contact">
+            </div>
+
+            <div class="form-group">
+              <input class="form-control" type="text" name="email" placeholder=" Enter Intern email">
+            </div>
+
+            <div class="form-group">
+              <input name="school" type="text" class="form-control form-control-user" placeholder="Enter Scchool">
             </div>
 
             <div class="form-group">
@@ -201,8 +223,8 @@
         <div class="modal-footer">
           
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-danger">Create</button>
-          
+            <!-- <button type="button" class="btn btn-danger">Create</button> -->
+            <input class="btn btn-danger" type = "submit" value = "Add Student" name = "submit">
         </div>
     </form>
     </div>
@@ -210,28 +232,7 @@
 </div>
 
 
-<!-- Delete Modal -->
-<div class="modal fade" id="deletemodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel"><center>Delete Modal</center></h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <P>Are you sure you want to delete ?</P>
-      </div>
-      <div class="modal-footer">
-        <form action="">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-danger">Delete</button>
-        </form>
-      </div>
-    </div>
-  </div>
-</div>
+
 
 
 
@@ -245,8 +246,22 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <div class="modal-body">
-        ...
+      
+          <input type="text" value="id: ">
+          <div class="form-group">
+            <select class="form-control" name="title" id="title">
+              <option value=""  selected hidden>select an activity</option>
+              <option value="Activity">Activity</option>
+              <option value="Zoom Link">Zoom Link</option>
+              <option value="Lab link">Lab link</option>
+              <option value="Quick Notes">Quick Notes</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+          <input name="content" value="" type="text" class="form-control form-control-user" placeholder="Enter Scchool">
+        </div>
+
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -261,17 +276,23 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel"><center>Logout Modal</center></h5>
+        <h5 class="modal-title " id="exampleModalLabel"><center>Logout Modal</center></h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
-        ...
+        <center>
+          You are Attempting to Log out. <br>
+        Are you sure you want to<strong></strong> logout ?</strong>
+        </center>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Logout</button>
+          <form action="/logout">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+
+            <button type="submit" class="btn btn-primary">Logout</button>
+          </form>
       </div>
     </div>
   </div>
