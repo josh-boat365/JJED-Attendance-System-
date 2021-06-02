@@ -20,3 +20,20 @@
     </div>
   </div>
 </div>
+
+
+
+
+uploaded_file = request.files['file']
+if uploaded_file.filename != '':
+    uploaded_file.save(uploaded_file.filename)
+
+    final_file = open(uploaded_file.filename)
+    print(final_file)
+    contents = csv.reader(final_file)
+    print(contents)
+    cursor.execute(create_intern_table)
+    connection.commit()
+    sql = """ INSERT INTO interns(intern_name, intern_school,intern_level,intern_contact,intern_email)VALUES(?,?,?,?,?)"""
+    insert_list_data(contents, sql)
+return redirect(url_for('index'))
