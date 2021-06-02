@@ -1,16 +1,29 @@
 """main function """
-
+import csv as csv_reader
 import datetime
-
 from dbconfig import DB
 from flask import Flask, render_template, url_for,  request, redirect, session, json
 import sqlite3
 
 
 
+# import os
+# from werkzeug.utils import secure_filename
+
+
+
+# UPLOAD_FOLDER = 'JJED/uploads'
+# ALLOWED_EXTENSIONS = {'csv'}
+
+# def allowed_file(filename):
+#     return '.' in filename and \
+#         filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
+
 app = Flask(__name__)
 
 app.secret_key = 'dffg67789@#$%^&*iuyt@'
+# app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
+
 
 def insert_list_data(mlist):
     connection = sqlite3.connect("jjed.db")
@@ -123,9 +136,21 @@ def admin_home():
             db.insert_intern("interns", username, school, level, contact, email)
             return redirect(url_for("admin_home"))
         
+        if request.form["submit"] == "csvfile":
+            uploaded_file = request.files['file']
+            if uploaded_file.filename != '':
+                uploaded_file.save(uploaded_file.filename)
+                
+                final_file = open(uploaded_file.filename)
+                contents = csv_reader.reader(final_file)
+                db.insert_all("interns", contents)
+                return redirect(url_for('admin_home'))
 
-    
     return render_template("admin_home.html", activities = activities, lenght=lenght, attendance = attendance, lenght_attendance=lenght_attendance)
+
+
+
+
 
 
 @app.route("/admin_home/<edit_id>", methods=["POST","GET"])
@@ -197,6 +222,14 @@ def intern_home():
 def logout():
     session.pop('username', default=None)
     return redirect("/")
+
+def csv():
+    import csv
+    db = DB()
+    file = open('person-records.csv')
+    contents = csv.reader(file)
+    db.insert_all("interns", contents)
+
 
 
 if __name__ == "__main__":

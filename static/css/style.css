@@ -13,7 +13,7 @@ header{
     justify-content: space-between;
     border-bottom: 5px rgb(255, 255, 255) solid;
 }
-.mycard_title{color: rgba(78, 76, 76, 0.1); transition: 0.3s; padding: 0px; margin: 0px;}
+.mycard_title{color: rgb(252, 215, 168); transition: 0.3s; padding: 0px; margin: 0px;}
 
 .add_intern button{
     position: fixed;
@@ -42,7 +42,7 @@ footer{
 }
 
 body{
-    border: 1px rgb(140, 41, 160) solid;
+    /* border: 1px rgb(140, 41, 160) solid; */
     width: 100%;
     margin: 0px;
     padding: 0px;
@@ -52,7 +52,7 @@ body{
 .main{
     height: 76%; 
     padding: 10px;
-    border: 1px rgb(241, 36, 9) solid;
+    /* border: 1px rgb(241, 36, 9) solid; */
     background-color: rgb(240, 240, 240);  
     box-sizing: border-box;
     display: flex;
