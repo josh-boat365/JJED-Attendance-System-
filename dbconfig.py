@@ -57,8 +57,8 @@ class DB():
         self.con.commit()
         return True
 
-    def insert_all(self,data):
-        self.cur.executemany("INSERT INTO {} VALUES(?,?,?,?,?)".format(tb_name), data)
+    def insert_all(self,tb_name,data):
+        self.cur.executemany("INSERT INTO {}(intern_name, intern_school,intern_level,intern_contact,intern_email) VALUES(?,?,?,?,?)".format(tb_name), data)
         self.con.commit()
         return True
         # INSERT INTO interns(intern_name, intern_school,intern_level,intern_contact,intern_email)VALUES(?,?,?,?,?)
