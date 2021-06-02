@@ -205,7 +205,7 @@ def intern_home():
     if request.method == "POST":
         isChecked = request.form['checked']
         intern_name = session.get("username")
-        current_date_time = datetime.datetime.now()
+        current_date_time = datetime.datetime.today()
         db = DB()
         #post attendance db
         attendance = db.insert("attendance","intern_name","attendance_datetime",intern_name,current_date_time)
