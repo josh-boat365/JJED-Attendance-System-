@@ -19,6 +19,7 @@
 
                 <a href="#" class="jjed">J J E D</a>
                 <form action="/logout">
+                    {{session.get("username")}}
                     <button type="submit" >Log out</button>
                 </form>
                 
@@ -64,6 +65,10 @@
                             <p>
                                 <strong>{{activities[activity][2]}}</strong> <small>{{activities[activity][3]}}</small>
                             </p>
+                            {% else %}
+                            <ul>
+                                <li>No Activities  Yet</li>
+                            </ul>
                             {% endif %}
                             {% endfor %}
     
@@ -86,6 +91,10 @@
                             <p>
                                 <strong>{{activities[activity][2]}}</strong> <small>{{activities[activity][3]}}</small>
                             </p>
+                            {% else %}
+                            <ul>
+                                <li>No Zoom link Yet</li>
+                            </ul>
                             {% endif %}
                             {% endfor %}
     
@@ -105,6 +114,10 @@
                             <p>
                                 <strong>{{activities[activity][2]}}</strong> <small>{{activities[activity][3]}}</small>
                             </p>
+                            {% else %}
+                            <ul>
+                                <li>No Labs Yet</li>
+                            </ul>
                             {% endif %}
                             {% endfor %}
     
@@ -122,15 +135,20 @@
                             <h2>Upcomming Events</h2>
                         </div>
                         <hr>
+                        {% for activity in range(length) %}
+                            {%if "Quick Note" in activities[activity][1] %}
+                                <ul>
+                                    <li><strong>{{activities[activity][2]}}</strong> <small>{{activities[activity][3]}}</small></li>
+                                    
+                                </ul>
+                                {% else %}
+                                <ul>
+                                    <li>No Upcomming Events Yet</li>
+                                </ul>
+                            {% endif %}
+
+                            {% endfor %}
                         
-                        <ul>
-                            <li>Lorem ipsum dolor sit amet.</li>
-                            <li>Lorem ipsum dolor sit amet.</li>
-                            <li>Lorem ipsum dolor sit amet.</li>
-                            <li>Lorem ipsum dolor sit amet.</li>
-                            <li>Lorem ipsum dolor sit amet.</li>
-                            <li>Lorem ipsum dolor sit amet.</li>
-                        </ul>
                     </div>
         
                     <div class="web-api-tab">
