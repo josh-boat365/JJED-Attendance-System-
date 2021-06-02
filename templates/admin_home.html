@@ -47,6 +47,7 @@
                       <tr>
                           <th>Names</th>
                           <th>Status</th>
+                          <th>Date</th>
                           <th>Time</th>
                       </tr>
                   </thead>
@@ -55,7 +56,8 @@
                       <tr>
                           <td>{{attendance[intern][1]}}</td>
                           <td><i class="fa fa-check text-success" aria-hidden="true"></i></td>
-                          <td>{{attendance[intern][2]}}</td>
+                           <td>{{attendance[intern][2][0:-7]}}</td>
+                          <td>{{attendance[intern][2][-5:]}}</td>
                       </tr>
                       {%else%}
                       
